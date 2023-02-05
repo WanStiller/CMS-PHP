@@ -1,12 +1,25 @@
 <?php 
 error_reporting(0);
-//$here= "Category";
 ?>
-
 <?php 
 session_start();
 require_once 'partials/configuration.php';
-$here="PORNO";
+?>
+
+<?php
+               if($_GET['subCategory']!=''){
+                $_SESSION['subCategory']=intval($_GET['subCategory']);
+              }
+              $query=mysqli_query($con,"SELECT * from tblcategory WHERE id='".$_SESSION['subCategory']."'");
+              while ($row=mysqli_fetch_array($query)) {
+                $CategoryName = $row['CategoryName'];
+                $Description = $row['Description'];
+
+                ?>
+                <?php $here=$row['CategoryName']; // Titulo del Sitio?>
+                <?php //echo htmlentities($row['CategoryName']);?>
+<?php } ?>
+<?php
 require_once 'partials/visual.php';
 ?>
 

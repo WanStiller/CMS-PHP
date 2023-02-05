@@ -1,1 +1,1 @@
-<?php include '../includes/config.php' ?>
+<?php require '../partials/configuration.php' ?>

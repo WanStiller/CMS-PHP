@@ -138,7 +138,7 @@ while($result=mysqli_fetch_array($ret))
 <div class="row">
 <div class="col-sm-12">
 <div class="card-box" style="background: #DDD">
-<h4 class="m-b-30 m-t-0 header-title"><b>Imagen del articulo a descargar</b></h4>
+<h4 class="m-b-30 m-t-0 header-title"><b>Imagen de la subcategoría</b></h4>
 <input type="file" class="form-control" id="descargar" name="descargar">
 </div>
 </div>

@@ -10,6 +10,7 @@ else{
 if(isset($_POST['submit']))
 {
 $posttitle=$_POST['posttitle'];
+$sluginput=$_POST['sluginput'];
 $autor=$_POST['autor'];
 $description=$_POST['description'];
 $catid=$_POST['category'];
@@ -43,7 +44,7 @@ move_uploaded_file($_FILES["uploads"]["tmp_name"],"../uploads/".$imgnewfile);
 move_uploaded_file($_FILES["descargar"]["tmp_name"],"../uploads/fullresolution/".$descnewfile);
 //
 $status=1;
-$query=mysqli_query($con,"insert into tblposts(PostTitle,Autor,Description,CategoryId,SubCategoryId,PostDetails,PostUrl,Is_Active,PostImage,alt_uploaded,PostUploaded) values('$posttitle','$autor','$description','$catid','$subcatid','$postdetails','$url','$status','$imgnewfile','$altuploaded','$descnewfile')");
+$query=mysqli_query($con,"insert into tblposts(PostTitle,Autor,Description,CategoryId,SubCategoryId,PostDetails,PostUrl,Is_Active,PostImage,alt_uploaded,PostUploaded,slug) values('$posttitle','$autor','$description','$catid','$subcatid','$postdetails','$url','$status','$imgnewfile','$altuploaded','$descnewfile','$sluginput')");
 if($query)
 {
 $msg="Artículo publicado satisfactoriamente. ";
@@ -134,7 +135,7 @@ Agregar Art&iacute;culo
 <div class="row">
 <div class="col-md-10 col-md-offset-1">
 <div class="p-6">
-<div class="">
+<div>
 <form name="addpost" method="post" enctype="multipart/form-data">
 <div class="form-group m-b-20">
 <label for="exampleInputEmail1">Autor</label>
@@ -148,6 +149,13 @@ Agregar Art&iacute;culo
 <label for="exampleInputEmail1">Descripci&oacute;n</label>
 <input type="text" class="form-control" id="description" name="description" placeholder="Ingresa una descripci&oacute;n" required>
 </div>
+
+
+<div class="form-group m-b-20">
+<label for="exampleInputEmail1">Slug</label>
+<input type="text" class="form-control" id="sluginput" name="sluginput" placeholder="ALT" required>
+</div>
+
 
 <div class="row">
 <div class="form-group m-b-20 col-md-6">
@@ -188,6 +196,9 @@ while($result=mysqli_fetch_array($ret))
 <label for="exampleInputEmail1">Atributo ALT de la imagen</label>
 <input type="text" class="form-control" id="altuploaded" name="altuploaded" placeholder="ALT" required>
 </div>
+
+
+
 
 
 <div class="row">

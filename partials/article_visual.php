@@ -42,6 +42,20 @@ while ($row=mysqli_fetch_array($query)) {
     <link rel="stylesheet" type="text/css" href="template/personalized/css/styles.css">
 
 
+    <?php //Portada Contador
+    $pagetype='header-tags';
+    $query=mysqli_query($con,"select * from tblpages where PageName='$pagetype'");
+    //$query2=mysqli_query($con,"Update tblpages set Vistas=Vistas+1 where PageName='$pagetype'");
+    while($row=mysqli_fetch_array($query))
+    {
+    ?>
+    <?php echo $row['Description'];?>
+    <?php } ?>
+    
+
+    <!-- END ANOTHER TAGS -->
+
+
 </head>
 
 <?php } ?>

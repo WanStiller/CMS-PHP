@@ -1,11 +1,8 @@
 <?php 
     session_start();
-    //require 'lang/index.php';
     require_once 'partials/configuration.php';
-    $here="WebSite";
     require_once 'partials/visual.php';
 ?>
-
 <body>
     <?php require 'partials/topbar.php';
             require 'partials/navigation.php';

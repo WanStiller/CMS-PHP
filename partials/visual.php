@@ -1,12 +1,35 @@
 <!DOCTYPE html>
-<html lang="<?php echo "$site_lang"; ?>">
-<head>
+<?php //name_site
+    $pagetype='lang';
+    $query=mysqli_query($con,"select * from tblwords where PageName='$pagetype'");
+    while($row=mysqli_fetch_array($query))
+    {
+    ?>
+    <html lang="<?php echo $row['Description'];?>">
+    <?php } ?>
+    <head>
+        
     <meta charset="utf-8">
-    <title><?php echo "$here" ;?></title>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <!--<meta content="Free HTML Templates" name="keywords">-->
-    <meta content="<?php echo "$site_description"; ?>" name="description">
+    <?php //name_site
+    $pagetype='site_name';
+    $query=mysqli_query($con,"select * from tblwords where PageName='$pagetype'");
+    while($row=mysqli_fetch_array($query))
+    {
+    ?>
+    <title><?php echo $row['Description'];?></title>
+    <?php } ?>
 
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <!--<meta content="Free HTML Templates" name="keywords">-->
+    <?php //name_site
+    $pagetype='description_site';
+    $query=mysqli_query($con,"select * from tblwords where PageName='$pagetype'");
+    while($row=mysqli_fetch_array($query))
+    {
+    ?>
+    <meta content="<?php echo $row['Description'];?>" name="description">
+    <?php } ?>
     <!-- Favicon -->
     <link href="img/favicon.ico" rel="icon">
 
@@ -28,5 +51,18 @@
 
     <link rel="stylesheet" type="text/css" href="template/personalized/css/styles.css">
 
+    <!--ANOTHER TAGS-->
+
+    <?php
+    $pagetype='header-tags';
+    $query=mysqli_query($con,"select * from tblpages where PageName='$pagetype'");
+    while($row=mysqli_fetch_array($query))
+    {
+    ?>
+    <?php echo $row['Description'];?>
+    <?php } ?>
+    
+
+    <!-- END ANOTHER TAGS -->
 
 </head>

@@ -1,6 +1,6 @@
                             <!-- Main News Slider Start -->
                             <div class="container-fluid">
-                            <?php //Portada
+                            <?php //Portada Contador
                             $pagetype='portada';
                             $query=mysqli_query($con,"select PageTitle,Description, Vistas, UpdationDate from tblpages where PageName='$pagetype'");
                             $query2=mysqli_query($con,"Update tblpages set Vistas=Vistas+1 where PageName='$pagetype'");

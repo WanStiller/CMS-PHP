@@ -1,7 +1,9 @@
 <?php
 
-    $site_description="SiTIo WEb";
-    $site_lang="en";
+
+
+    //$site_description="NONE";
+    //$site_lang="zg";
     
 	define('DB_SERVER', 'localhost');
 	define('DB_USER', 'root');
@@ -33,3 +35,16 @@
  // RUTA DE LA IMAGEN SUBIDA
 
     $uploaded_image = "uploads/";
+
+
+//LANGUAGE CONFIGURATION
+?>
+
+    <?php //name_site
+    $pagetype='lang';
+    $query=mysqli_query($con,"select * from tblwords where PageName='$pagetype'");
+    while($row=mysqli_fetch_array($query))
+    {
+    $site_lang=$row['Description'];
+    ?>
+    <?php } ?>

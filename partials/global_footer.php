@@ -92,11 +92,17 @@
         </div>
     </div>
     <div class="container-fluid py-4 px-sm-3 px-md-5" style="background: #111111;">
-        <p class="m-0 text-center">&copy; <a href="#">Hello</a>. All Rights Reserved. 
-
-    Design by <a href="#">HTML Code</a><br>
-        Distributed by <a href="#">PHP</a>
-    </p>
+    <!--TEXT FOOTER GLOBAL-->
+    <?php
+    $pagetype='footer';
+    $query=mysqli_query($con,"select PageTitle,Description, Vistas, UpdationDate from tblpages where PageName='$pagetype'");
+    //$query2=mysqli_query($con,"Update tblpages set Vistas=Vistas+1 where PageName='$pagetype'");
+    while($row=mysqli_fetch_array($query))
+    {
+    ?>
+    <?php echo $row['Description'];?>
+    <?php } ?>
+    <!-- END TEXT FOOTER  -->
     </div>
     <!-- Footer End -->
     <!-- Back to Top -->

@@ -8,12 +8,18 @@
                     <div class="d-flex justify-content-between">
                         <div class="bg-primary text-dark text-center font-weight-medium py-2" style="width: 170px;">Breaking News</div>
                         <div class="owl-carousel tranding-carousel position-relative d-inline-flex align-items-center ml-3"
-                            style="width: calc(100% - 170px); padding-right: 90px;">
-                            <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold" href="">01 Lorem ipsum dolor sit amet elit. Proin interdum lacus eget ante tincidunt, sed faucibus nisl sodales</a></div>
-                            <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold" href="">02 Lorem ipsum dolor sit amet elit. Proin interdum lacus eget ante tincidunt, sed faucibus nisl sodales</a></div>
-                            <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold" href="">03 Lorem ipsum dolor sit amet elit. Proin interdum lacus eget ante tincidunt, sed faucibus nisl sodales</a></div>
-                            <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold" href="">04 Lorem ipsum dolor sit amet elit. Proin interdum lacus eget ante tincidunt, sed faucibus nisl sodales</a></div>
-                            <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold" href="">05 Lorem ipsum dolor sit amet elit. Proin interdum lacus eget ante tincidunt, sed faucibus nisl sodales</a></div>
+                            style="width: calc(100% - 170px); padding-right: 90px;">                           
+
+                            <?php
+                    $query=mysqli_query($con,"select tblposts.id as pid,tblposts.slug as slug,tblposts.PostTitle as posttitle,tblposts.Description as Description, tblposts.PostImage as PostImage, tblposts.alt_uploaded as altuploaded from tblposts left join tblcategory on tblcategory.id=tblposts.CategoryId left join  tblsubcategory on tblsubcategory.SubCategoryId=tblposts.SubCategoryId order by RAND() desc limit 4");
+                while ($row=mysqli_fetch_array($query)) {
+                        ?>
+
+                        <div class="text-truncate"><a class="text-white text-uppercase font-weight-semi-bold" href="article.php?nid=<?php echo htmlentities($row['pid'])?>/<?php echo htmlentities($row['slug'])?>"><?php echo htmlentities($row['Description'])?></a></div>
+
+                    <?php } ?>
+
+
                         </div>
                     </div>
                 </div>
