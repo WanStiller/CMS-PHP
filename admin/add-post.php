@@ -145,9 +145,28 @@ Agregar Art&iacute;culo
 <label for="exampleInputEmail1">T&iacute;tulo del Art&iacute;culo</label>
 <input type="text" class="form-control" id="posttitle" name="posttitle" placeholder="Ingresa un T&iacute;tulo" required>
 </div>
+
+
+
+<script type="text/javascript">
+	window.onload = function () {
+numeracion();}
+
+function numeracion(e) {
+let eArea = document.getElementById('areaNumeracion');
+let eArea2 = document.getElementById('description');
+eArea.innerText="Numero de caracteres: "+eArea2.value.length;
+}
+</script>
+
+
+
+
+
 <div class="form-group m-b-20">
 <label for="exampleInputEmail1">Descripci&oacute;n</label>
-<input type="text" class="form-control" id="description" name="description" placeholder="Ingresa una descripci&oacute;n" required>
+<input type="text" class="form-control" id="description" name="description" placeholder="Ingresa una descripci&oacute;n" required onkeyup="numeracion(event);">
+<p id="areaNumeracion"></p>
 </div>
 
 

@@ -117,10 +117,24 @@ while($row=mysqli_fetch_array($query))
 <label for="exampleInputEmail1">T&iacute;tulo</label>
 <input type="text" class="form-control" id="posttitle" value="<?php echo htmlentities($row['title']);?>" name="posttitle" placeholder="Enter title" required>
 </div>
+
+
+<script>
+function numeracion(e) {
+let eArea = document.getElementById('areaNumeracion');
+let eArea2 = document.getElementById('description');
+eArea.innerText="Caracteres: "+eArea2.value.length;
+}
+</script>
 <div class="form-group m-b-20">
 <label for="exampleInputEmail1">Descripci&oacute;n</label>
-<input type="text" class="form-control" id="description" value="<?php echo htmlentities($row['description']);?>" name="description" placeholder="Enter Description" required>
+<input type="text" class="form-control" id="description" value="<?php echo htmlentities($row['description']);?>" name="description" placeholder="Enter Description" required onkeyup="numeracion(event);">
+<p id="areaNumeracion"></p>
 </div>
+<!--<div class="form-group m-b-20">
+<label for="exampleInputEmail1">Descripci&oacute;n</label>
+<input type="text" class="form-control" id="description" value="<?php echo htmlentities($row['description']);?>" name="description" placeholder="Enter Description" required>
+</div>-->
 <div class="form-group m-b-20">
 <label for="exampleInputEmail1">Categor&iacute;a</label>
 <select class="form-control" name="category" id="category" onChange="getSubCat(this.value);" required>

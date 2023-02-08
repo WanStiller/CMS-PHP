@@ -1,3 +1,18 @@
+<!-- Front manage-->
+
+<?php 
+error_reporting(0);
+if(strlen($_SESSION['login'])==0)
+{ 
+//echo 'Welcome';
+}
+else{
+?>
+
+<?php require 'front-manage/top-bar.php'; ?>
+<!-- End Front manage-->
+<?php } ?>
+
 <!-- Topbar Start -->
     <div class="container-fluid d-none d-lg-block text-uppercase">
         <div class="row align-items-center bg-dark px-lg-5">

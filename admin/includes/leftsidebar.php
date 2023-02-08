@@ -32,7 +32,7 @@
 <li class="has_sub">
 <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-format-list-bulleted"></i> <span> P&aacute;ginas </span> <span class="menu-arrow"></span></a>
 <ul class="list-unstyled">
-<li><a href="portada.php">Portada</a></li>
+<li><a href="partials.php">Partials</a></li>
 </ul>
 </li>
 <li class="has_sub">

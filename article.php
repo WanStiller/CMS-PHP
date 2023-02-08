@@ -20,7 +20,7 @@
                         <div class="bg-dark" style="width: 100%!important;margin-top: -1px!important">
                             <?php
 $pid=intval($_GET['nid']);
-$query=mysqli_query($con,"select tblposts.PostTitle as posttitle,tblposts.Autor as autor,tblposts.description as description,tblposts.alt_uploaded as alt_uploaded,tblposts.PostUploaded as PostUploaded,tblposts.Views as views,tblposts.PostImage,tblcategory.CategoryName as category,tblcategory.id as cid,tblsubcategory.Subcategory as subcategory,tblposts.PostDetails as postdetails,tblposts.PostingDate as postingdate,tblposts.PostUrl as url from tblposts left join tblcategory on tblcategory.id=tblposts.CategoryId left join  tblsubcategory on  tblsubcategory.SubCategoryId=tblposts.SubCategoryId where tblposts.id='$pid'");
+$query=mysqli_query($con,"select tblposts.id as id, tblposts.PostTitle as posttitle,tblposts.Autor as autor,tblposts.description as description,tblposts.alt_uploaded as alt_uploaded,tblposts.PostUploaded as PostUploaded,tblposts.Views as views,tblposts.PostImage,tblcategory.CategoryName as category,tblcategory.id as cid,tblsubcategory.Subcategory as subcategory,tblposts.PostDetails as postdetails,tblposts.PostingDate as postingdate,tblposts.PostUrl as url from tblposts left join tblcategory on tblcategory.id=tblposts.CategoryId left join  tblsubcategory on  tblsubcategory.SubCategoryId=tblposts.SubCategoryId where tblposts.id='$pid'");
 $query2=mysqli_query($con,"Update tblposts set views=views+1 where id=$pid");
 $rowcount=mysqli_num_rows($query);
 if($rowcount==0)
@@ -35,11 +35,38 @@ while ($row=mysqli_fetch_array($query)) {
 
 <div>
 <div>
-<?php //require('includes/header.php'); ESTA LINEA ESTABLECE EL MENU SI ES LOGIN O NO
-    //if(!isset($_SESSION["user_id"]) || $_SESSION["user_id"]==null){include("includes/article-no.php");} else {require("includes/article.php");}
-?>
+
 
 <div style="margin:20px;padding-top: 10px!important;font-size: 0.9em">
+
+
+
+
+
+<?php 
+error_reporting(0);
+if(strlen($_SESSION['login'])==0)
+{ 
+//echo 'Welcome';
+}
+else{
+?>
+
+<a href="front-manage/article-edit.php?pid=<?php echo htmlentities($row['id']);?>#form_edit">
+        <div style="margin-top: 10px"><img src="images/pencil.png" style="width: 100%;height: auto;max-width: 50px;display: inline-block; margin-bottom:10px;margin-right: 20px;"><h2 style="display: inline-block;color:#6CC417">EDITAR ESTE ARTICULO</h2></div>
+</a>
+
+
+<!-- End Front manage-->
+
+
+<?php } ?>
+
+
+
+
+
+
     <h1 class="text-uppercase text-secondary"><?php echo htmlentities($row['posttitle']);?></h1>
 <p class="text-uppercase text-secondary"><b>Category : </b> <?php echo htmlentities($row['category']);?> <!--<a href="category.php?catid=<?php echo htmlentities($row['cid'])?>"></a>--> |
 <b>Sub Category : </b><?php echo htmlentities($row['subcategory']);?><br>
